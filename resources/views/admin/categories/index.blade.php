@@ -47,7 +47,7 @@
                         {{ $category->description }}
                     </td>
                     <td>
-                        <a  class="btn btn-info" href="{{ route('admin.categories.show', $category->id) }}">Show</a>
+                        <a  class="btn btn-info" href="{{ route('admin.categories.sizes.index', $category->id) }}">Sizes</a>
                         @can('role-edit')
                             <a class="btn btn-primary" href="{{ route('admin.categories.edit', $category->id) }}">Edit</a>
                         @endcan

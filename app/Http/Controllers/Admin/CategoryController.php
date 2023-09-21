@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Models\Category;
+use App\Models\CategorySize;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,6 +28,8 @@ class CategoryController extends Controller
     {
         return view('admin.categories.create');
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -115,5 +118,24 @@ class CategoryController extends Controller
         $category->delete();
 
         return to_route('admin.categories.index')->with('danger', 'Category deleted successfully.');
+    }
+
+
+    public function categorysizes(Category $category)
+    {
+        $sizes= $category->categorySizes;
+        return view('admin.categories.sizes',compact('sizes','category'));
+    }
+
+    public function storesize(Request $request,Category $category)
+    {
+        $sizes= $category->categorySizes()->create($request->all());
+        return back()->with('success','Created size successfully');
+    }
+
+    public function deletesize(Category $category,CategorySize $size)
+    {
+       $size->delete();
+       return back()->with('success','deleted size successfully');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductStoreRequest;
 use App\Models\Category;
+use App\Models\CategorySize;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -100,5 +101,20 @@ class ProductController extends Controller
 
         return redirect()->route('admin.products.index')
             ->with('success', 'Product deleted successfully');
+    }
+
+    public function indexsizes(Product $product)
+    {
+        $sizes = CategorySize::where('category_id', $product->category_id)->get();
+        $productsizes = $product->productSizes->pluck('id','id')->all();
+        return view('admin.products.sizes', compact('product', 'sizes', 'productsizes'));
+    }
+
+    public function storesizes(Product $product,Request $request)
+    {
+
+        $product->productSizes()->sync($request->sizes);
+
+        return back()->with('success','add size successfully');
     }
 }

@@ -66,7 +66,7 @@
                             <button type="submit" class="btn btn-danger">Delete</button>
                         @endcan
                     </form>
-                     <a style="display: inline-block" class="btn btn-success sm" href="{{ route('admin.products.show', $product->id) }}" >Props</a>
+                     <a style="display: inline-block" class="btn btn-success sm" href="{{ route('admin.products.sizes.index', $product->id) }}" >Sizes</a>
                 </td>
             </tr>
         @endforeach

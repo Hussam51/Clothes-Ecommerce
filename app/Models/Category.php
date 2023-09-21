@@ -9,4 +9,12 @@ class Category extends Model
 {
     use HasFactory;
     public $fillable=['name','image','description'];
+
+    public function categorySizes(){
+        return $this->hasMany(CategorySize::class);
+    }
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }

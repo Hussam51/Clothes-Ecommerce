@@ -21,4 +21,8 @@ class Product extends Model
     // public function props(){
     //     return $this->belongsToMany(ProductProp::class,'product_props','product_id','prop_id','id');
     // }
+
+    public function productSizes(){
+        return $this->belongsToMany(CategorySize::class,'product_sizes','category_id','category_size_id','id');
+    }
 }

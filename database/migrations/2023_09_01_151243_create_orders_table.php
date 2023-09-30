@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
+            $table->string('number')->unique();
+            $table->enum('status', ['pendding', 'delivering', 'processing', 'refunded', 'canceled'])
+                ->default('pendding');
+            $table->enum('payment_status', ['paid', 'unpaid', 'pendding', 'failed'])
+                ->default('pendding');
+            $table->string('payment_method')->nullable();
             $table->timestamps();
         });
     }

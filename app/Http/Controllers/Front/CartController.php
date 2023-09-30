@@ -13,11 +13,19 @@ class CartController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(CartInterface $cart)
+    public $cart;
+
+    public function __construct(CartInterface $cart)
+    {
+        $this->cart = $cart;
+    }
+
+
+    public function index()
     {
 
 
-        return view('front.cart', ['cart'=>$cart]);
+        return view('front.cart', ['cart' => $this->cart]);
     }
 
     /**
@@ -28,7 +36,7 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, CartInterface $cart)
+    public function store(Request $request)
     {
 
         $request->validate([
@@ -36,7 +44,7 @@ class CartController extends Controller
             'quantity' => ['nullable', 'int', 'min:1']
         ]);
         $product = Product::find($request->product_id);
-        $cart->add($product, $request->quantity);
+        $this->cart->add($product, $request->quantity);
         return redirect()->route('cart.index');
     }
 
@@ -53,31 +61,30 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CartInterface $cart)
+    public function update($id, Request $request,)
     {
         $request->validate([
-            'product_id' => 'required',
-            'quantity' => ['nullable', 'int', 'min:1']
+            'quantity' => ['nullable', 'int', 'min:1'],
         ]);
-        $product = Product::find($request->post('product_id'));
-        $cart->update($product, $request->post('quantity'));
+
+        $this->cart->update($id, $request->post('quantity'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( CartInterface $cart,$id)
+    public function destroy($id)
     {
-        $cart->delete($id);
+        $this->cart->delete($id);
     }
 
-    public function empty(CartInterface $cart)
+    public function empty()
     {
-        $cart->empty();
+        $this->cart->empty();
     }
 
-    public function total(CartInterface $cart)
+    public function total()
     {
-        $cart->total();
+        $this->cart->total();
     }
 }

@@ -35,7 +35,7 @@ class CartModelRepository implements CartInterface
         if (is_null($item)) {
             $user = Auth::id();
 
-            Cart::create([
+          return  Cart::create([
                 'product_id' => $product->id,
                 'quantity' => $quantity,
                 'user_id' => $user,
@@ -43,18 +43,18 @@ class CartModelRepository implements CartInterface
 
             ]);
         }
-        $item->increment('quantity', $quantity);
+      return  $item->increment('quantity', $quantity);
     }
-    public function update(Product $product, $quantity = 1)
+    public function update($id, $quantity = 1)
     {
-        Cart::where('product_id', '=', $product->id)
+        Cart::where('id', '=', $id)
             ->update([
                 'quantity' => $quantity
             ]);
     }
     public function delete($id)
     {
-        Cart::where('product_id', '=', $id)
+        Cart::where('id', '=', $id)
             ->delete();
     }
     public function total()

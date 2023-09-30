@@ -1,6 +1,7 @@
 
 <!--===============================================================================================-->
-<script src="<?php echo e(asset('front/vendor/jquery/jquery-3.2.1.min.js')); ?>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <!--===============================================================================================-->
 	<script src="<?php echo e(asset('front/vendor/animsition/js/animsition.min.js')); ?>"></script>
 <!--===============================================================================================-->
@@ -98,5 +99,12 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="<?php echo e(asset('front/js/main.js')); ?>"></script>
+
+
+<script src="<?php echo e(asset('front/js/main.js')); ?>"></script>
+<script src="<?php echo e(asset('front/js/tiny-slider.js')); ?>"></script>
+
+<script src="<?php echo e(asset('front/js/glightbox.min.js')); ?>"></script>
+<script src="<?php echo e(asset('front/js/bootstrap.min.js')); ?>"></script>
+
 <?php /**PATH C:\xampp\htdocs\clothesEcommerce\resources\views/layouts/front/script.blade.php ENDPATH**/ ?>

@@ -1,6 +1,13 @@
 <x-admin-layout>
 
-
+    @section('breadcrumb')
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Role</a></li>
+          <li class="breadcrumb-item active">Edit</li>
+        </ol>
+      </div><!-- /.col -->
+    @endsection
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">

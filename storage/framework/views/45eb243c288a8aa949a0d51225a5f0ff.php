@@ -49,12 +49,7 @@
           <div class="col-sm-6">
             <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
-            </ol>
-          </div><!-- /.col -->
+         <?php echo $__env->yieldContent('breadcrumb'); ?>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -113,10 +108,14 @@
 <script src="<?php echo e(asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')); ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo e(asset('dist/js/adminlte.js')); ?>"></script>
+<!-- notify App -->
+<link rel="stylesheet" href="dist/simple-notify.min.css" />
+<script src="dist/simple-notify.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo e(asset('dist/js/pages/dashboard.js')); ?>"></script>
+<?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 </html>
 <?php /**PATH C:\xampp\htdocs\clothesEcommerce\resources\views/layouts/dashboard/index.blade.php ENDPATH**/ ?>

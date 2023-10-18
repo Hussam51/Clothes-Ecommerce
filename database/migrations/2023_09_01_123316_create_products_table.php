@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('quantity')->default('1');
             $table->string('description')->nullable();
             $table->double('price');
+            $table->enum('status',['active','unactive'])->default('active');
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->index('category_id');
             $table->timestamps();

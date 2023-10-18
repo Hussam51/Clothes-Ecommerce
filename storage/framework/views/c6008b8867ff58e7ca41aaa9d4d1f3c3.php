@@ -13,7 +13,7 @@
         <div class="row">
             <section class="bg0 p-t-23 p-b-130">
                 <div class="container">
-                    <div class="col-md-12 col-lg-4 p-b-30 m-lr-auto">
+                    <div class="col-md-6 col-lg-4 p-b-30 m-lr-auto">
                         <!-- Block1 -->
                         <div class="block1 wrap-pic-w">
 

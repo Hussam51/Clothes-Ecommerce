@@ -60,6 +60,7 @@
                     </a>
                 </li>
 
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie text-primary"></i>
@@ -87,9 +88,15 @@
                             </a>
                         </li>
 
+
                     </ul>
                 </li>
-
+                <li class="nav-item">
+                    <a href="{{route('admin.orders.index')}}" class="nav-link">
+                        <i class="fa fa-users mr-2 nav-icon text-info"></i>
+                        <p>Orders</p>
+                    </a>
+                </li>
 
             </ul>
         </nav>

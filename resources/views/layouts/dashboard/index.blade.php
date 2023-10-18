@@ -49,12 +49,7 @@
           <div class="col-sm-6">
             <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
-            </ol>
-          </div><!-- /.col -->
+         @yield('breadcrumb')
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -689,9 +684,13 @@
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
+<!-- notify App -->
+<link rel="stylesheet" href="dist/simple-notify.min.css" />
+<script src="dist/simple-notify.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 {{-- <script src="{{asset('dist/js/demo.js')}}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+@stack('scripts')
 </body>
 </html>

@@ -22,10 +22,13 @@ class ProductController extends Controller
     //     $this->middleware('permission:product-delete', ['only' => ['destroy']]);
     // }
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('tags')->latest()->paginate(5);
-        return view('admin.products.index', compact('products'));
+        $categories = Category::all();
+        $products = Product::search($request->query())
+            ->with('tags')->latest()->paginate(5);
+
+        return view('admin.products.index', compact('products', 'categories'));
     }
 
 
@@ -52,9 +55,9 @@ class ProductController extends Controller
         if ($request->has('tags')) {
             $product->tags()->sync($request->tags);
         }
+        toastr('Data has been saved successfully','success');
 
-        return redirect()->route('admin.products.index')
-            ->with('success', 'Product created successfully.');
+        return redirect()->route('admin.products.index');
     }
 
     public function show(Product $product)
@@ -88,8 +91,9 @@ class ProductController extends Controller
         if ($request->has('tags')) {
             $product->tags()->sync($request->tags);
         }
-        return redirect()->route('admin.products.index')
-            ->with('success', 'Product updated successfully');
+        toastr('Product updated successfully','success');
+        return redirect()->route('admin.products.index');
+
     }
 
     public function destroy(Product $product)
@@ -98,23 +102,23 @@ class ProductController extends Controller
             Storage::delete($product->image);
         }
         $product->delete();
+        toastr('Product deleted successfully','danger');
+        return redirect()->route('admin.products.index');
 
-        return redirect()->route('admin.products.index')
-            ->with('success', 'Product deleted successfully');
     }
 
     public function indexsizes(Product $product)
     {
         $sizes = CategorySize::where('category_id', $product->category_id)->get();
-        $productsizes = $product->productSizes->pluck('id','id')->all();
+        $productsizes = $product->productSizes->pluck('id', 'id')->all();
         return view('admin.products.sizes', compact('product', 'sizes', 'productsizes'));
     }
 
-    public function storesizes(Product $product,Request $request)
+    public function storesizes(Product $product, Request $request)
     {
 
         $product->productSizes()->sync($request->sizes);
 
-        return back()->with('success','add size successfully');
+        return back()->with('success', 'add size successfully');
     }
 }

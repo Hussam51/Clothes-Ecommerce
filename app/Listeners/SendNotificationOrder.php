@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\CreateOrder;
+use App\Models\User;
 use App\Notifications\CreateOrder as NotificationsCreateOrder;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -24,6 +25,6 @@ class SendNotificationOrder
      */
     public function handle(CreateOrder $event): void
     {
-       Notification::send(Auth::user(),new NotificationsCreateOrder($event->order));
+       Notification::send(User::first(),new NotificationsCreateOrder($event->order));
     }
 }

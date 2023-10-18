@@ -1,6 +1,13 @@
 <x-admin-layout>
 
-
+    @section('breadcrumb')
+    <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">User</a></li>
+          <li class="breadcrumb-item active">Edit</li>
+        </ol>
+      </div><!-- /.col -->
+    @endsection
 
 
 
@@ -68,7 +75,7 @@
                     @endforeach
 
                 </select>
-                
+
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
